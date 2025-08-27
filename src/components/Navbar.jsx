@@ -1,13 +1,30 @@
 import React from "react";
 import Container from "./Container";
-import { NavLink } from "react-router";
-import { MdOutlineMenu } from "react-icons/md";
+import { Link, NavLink } from "react-router";
+import { MdOutlineMenu, MdOutlineShoppingCart } from "react-icons/md";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            `text-lg font-medium ${isActive && "text-orange-500"}`
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/about"}
+          className={({ isActive }) =>
+            `text-lg font-medium ${isActive && "text-orange-500"}`
+          }
+        >
+          About
+        </NavLink>
       </li>
     </>
   );
@@ -31,13 +48,15 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+            <Link to={"/"} className="text-lg logo">
+              <span className="text-orange-500">Wildflower & Co.</span>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{links}</ul>
+            <ul className="flex gap-8">{links}</ul>
           </div>
           <div className="navbar-end">
-            <a className="btn">Button</a>
+            <MdOutlineShoppingCart size={28} />
           </div>
         </div>
       </Container>
